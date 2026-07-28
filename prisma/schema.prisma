@@ -1,0 +1,60 @@
+// Schema do Prisma — agendamento do consultório de Geriatria
+// Banco local em SQLite (fácil de trocar depois para Postgres/MySQL em produção)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Regras de disponibilidade definidas pela médica.
+// Cada linha representa uma faixa de horário recorrente em um dia da semana.
+// Os slots de agendamento são gerados dinamicamente a partir dessas regras.
+model Disponibilidade {
+  id         String   @id @default(cuid())
+  diaSemana  Int // 0 = domingo, 1 = segunda, ... 6 = sábado
+  horaInicio String // formato "HH:mm", ex: "08:00"
+  horaFim    String // formato "HH:mm", ex: "12:00"
+  duracaoMin Int      @default(30) // duração de cada consulta, em minutos
+  ativo      Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([diaSemana])
+}
+
+// Datas totalmente bloqueadas (férias, feriados, imprevistos).
+// Nenhum slot é oferecido em uma data bloqueada.
+model BloqueioData {
+  id        String   @id @default(cuid())
+  data      DateTime @unique // apenas a data (meia-noite), dia inteiro bloqueado
+  motivo    String?
+  createdAt DateTime @default(now())
+}
+
+// Consulta agendada por um paciente.
+model Agendamento {
+  id             String   @id @default(cuid())
+  data           DateTime // data da consulta (meia-noite, apenas a data)
+  horaInicio     String // "HH:mm"
+  horaFim        String // "HH:mm"
+  nomePaciente   String
+  telefone       String
+  email          String
+  dataNascimento DateTime
+  convenio       String // "Particular" ou nome do convênio
+  motivo         String?
+  // "CONFIRMADO" | "CANCELADO" (SQLite não suporta enums nativamente)
+  status         String   @default("CONFIRMADO")
+  // Chave "<data>_<horaInicio>" enquanto CONFIRMADO; nula quando CANCELADO.
+  // Usamos isso (em vez de @@unique([data, horaInicio])) porque um cancelamento
+  // não pode deixar o slot preso: linhas com chaveSlot nula não colidem entre si.
+  chaveSlot      String?  @unique
+  criadoEm       DateTime @default(now())
+  atualizadoEm   DateTime @updatedAt
+
+  @@index([data])
+}
