@@ -2,56 +2,50 @@ import { Container } from "@/components/ui/Container";
 
 const perguntas = [
   {
-    pergunta: "Preciso de encaminhamento para consultar com a geriatra?",
+    pergunta: "Atende convênio ou é só particular?",
     resposta:
-      "Não. Você pode agendar diretamente, seja para uma primeira avaliação ou para acompanhamento contínuo.",
+      "As consultas são exclusivamente particulares. Valores e formas de pagamento podem ser confirmados diretamente pelo WhatsApp.",
   },
   {
-    pergunta: "A consulta domiciliar tem custo adicional?",
+    pergunta: "Como funciona a primeira consulta?",
     resposta:
-      "Sim, a consulta domiciliar possui condições específicas. Entre em contato pelo WhatsApp para mais detalhes.",
+      "A primeira consulta reúne uma avaliação completa da saúde, histórico de doenças, medicamentos em uso e uma escuta cuidadosa das queixas do paciente e da família.",
   },
   {
-    pergunta: "Quais documentos devo levar na primeira consulta?",
+    pergunta: "Existe atendimento domiciliar?",
     resposta:
-      "Documento de identidade, carteirinha do convênio (se houver) e, se possível, uma lista com os medicamentos em uso e exames recentes.",
+      "Sim, realizamos visita domiciliar. É a melhor opção para quem tem mobilidade reduzida, está acamado ou em recuperação — só precisa agendar pelo WhatsApp.",
   },
   {
-    pergunta: "Posso remarcar ou cancelar minha consulta?",
+    pergunta: "Posso levar um familiar para acompanhar?",
     resposta:
-      "Sim. Entre em contato pelo WhatsApp com antecedência para reagendar ou cancelar seu horário.",
-  },
-  {
-    pergunta: "O consultório atende por convênio?",
-    resposta: "Atendemos os convênios: [CONVENIOS], além de consultas particulares.",
+      "Sim, e é muito recomendado. A presença de um familiar ou cuidador ajuda na troca de informações e no acompanhamento do plano de cuidado.",
   },
 ];
 
 export function FAQ() {
   return (
-    <section id="faq" className="py-16 sm:py-24">
-      <Container className="mx-auto max-w-3xl">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">
-            Perguntas frequentes
+    <section id="faq" className="bg-cream py-20 sm:py-24">
+      <Container className="mx-auto max-w-2xl">
+        <div className="mb-12 text-center">
+          <span className="mb-3.5 inline-block text-[13px] font-semibold uppercase tracking-wide text-brand-400">
+            Dúvidas frequentes
+          </span>
+          <h2 className="font-serif text-3xl font-semibold leading-tight text-brand-600 sm:text-4xl">
+            Perguntas antes da consulta
           </h2>
         </div>
-        <div className="mt-10 space-y-4">
+
+        <div className="flex flex-col gap-px overflow-hidden rounded-2xl bg-ink/10">
           {perguntas.map((item) => (
-            <details
-              key={item.pergunta}
-              className="group rounded-xl border border-slate-200 bg-white p-5 open:shadow-sm"
-            >
-              <summary className="flex cursor-pointer list-none items-center justify-between font-semibold text-slate-900 marker:content-none">
+            <details key={item.pergunta} className="group bg-cream">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-[22px] font-semibold text-brand-600 marker:content-none">
                 {item.pergunta}
-                <span
-                  className="ml-4 shrink-0 text-brand-600 transition-transform group-open:rotate-45"
-                  aria-hidden="true"
-                >
+                <span className="flex h-[26px] w-[26px] flex-none items-center justify-center rounded-full bg-brand-50 text-base text-brand-600 transition-transform group-open:rotate-45">
                   +
                 </span>
               </summary>
-              <p className="mt-3 text-slate-600">{item.resposta}</p>
+              <p className="px-6 pb-6 text-[15px] leading-relaxed text-ink-600">{item.resposta}</p>
             </details>
           ))}
         </div>

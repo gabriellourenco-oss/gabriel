@@ -1,46 +1,68 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 
-const pontos = [
+const trajetoria = [
+  { periodo: "2025", texto: "Graduação em Medicina — Univale, Governador Valadares" },
   {
-    titulo: "Formação",
-    texto:
-      "Graduação em Medicina, Residência em Medicina de Família e Comunidade e Pós-graduação em Geriatria pelo Hospital Israelita Albert Einstein.",
+    periodo: "Atual",
+    texto: "Médica na Atenção Primária à Saúde, com atendimento contínuo e longitudinal",
   },
   {
-    titulo: "Abordagem",
-    texto:
-      "Cuidado centrado na pessoa idosa e em sua família, com visão integral da saúde física, cognitiva, emocional e social.",
-  },
-  {
-    titulo: "Experiência",
-    texto:
-      "Atuação em consultório, atendimento domiciliar e acompanhamento longitudinal de pacientes e cuidadores.",
+    periodo: "Em curso",
+    texto: "Pós-graduação em Geriatria — Instituto Israelita Albert Einstein",
   },
 ];
 
 export function Sobre() {
   return (
-    <section id="sobre" className="py-16 sm:py-24">
-      <Container>
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">
-            Sobre [NOME_MEDICA]
-          </h2>
-          <p className="mt-4 text-lg text-slate-600">
-            Uma abordagem cuidadosa e humana, dedicada à qualidade de vida na
-            terceira idade.
-          </p>
+    <section id="sobre" className="bg-brand-50 py-20 sm:py-24">
+      <Container className="grid items-start gap-14 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="relative mx-auto w-full max-w-[420px]">
+          <Image
+            src="/images/dra-sobre.jpeg"
+            alt="Dra. Juliana Trindade sorrindo"
+            width={420}
+            height={525}
+            className="aspect-[4/5] w-full rounded-[20px] object-cover object-[50%_25%] shadow-[0_20px_40px_-16px_rgba(15,45,43,0.25)]"
+          />
         </div>
-        <div className="mt-12 grid gap-8 sm:grid-cols-3">
-          {pontos.map((ponto) => (
-            <div
-              key={ponto.titulo}
-              className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm"
-            >
-              <h3 className="text-lg font-semibold text-brand-700">{ponto.titulo}</h3>
-              <p className="mt-2 text-slate-600">{ponto.texto}</p>
-            </div>
-          ))}
+
+        <div>
+          <span className="mb-3.5 inline-block text-[13px] font-semibold uppercase tracking-wide text-brand-400">
+            Sobre a Dra. Juliana
+          </span>
+          <h2 className="text-balance font-serif text-3xl font-semibold leading-tight text-brand-600 sm:text-4xl">
+            Uma trajetória construída ao lado do paciente da urgência à
+            atenção contínua.
+          </h2>
+          <p className="mt-5 text-[17px] leading-relaxed text-ink-600">
+            Formada em Medicina pela Univale, em Governador Valadares, a Dra.
+            Juliana já viveu os dois lados do cuidado: o ritmo intenso da
+            urgência e emergência no Hospital de Sardoá, e a escuta próxima e
+            contínua da Atenção Primária à Saúde, onde atua atualmente em
+            posto de saúde da região.
+          </p>
+          <p className="mt-4 text-[17px] leading-relaxed text-ink-600">
+            Essa experiência despertou um interesse especial pela saúde do
+            idoso — hoje aprofundado na pós-graduação em Geriatria pelo
+            Instituto Israelita de Ensino e Pesquisa Albert Einstein. Sua
+            abordagem une agilidade clínica, comunicação empática e decisões
+            tomadas em conjunto com o paciente e a família.
+          </p>
+
+          <div className="mt-8 flex flex-col">
+            {trajetoria.map((item) => (
+              <div
+                key={item.periodo}
+                className="flex gap-4 border-t border-ink/10 py-4.5"
+              >
+                <span className="w-24 flex-none font-serif text-sm font-semibold text-brand-300">
+                  {item.periodo}
+                </span>
+                <span className="text-[15.5px] text-ink">{item.texto}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </Container>
     </section>

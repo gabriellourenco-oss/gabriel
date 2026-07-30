@@ -2,12 +2,14 @@ import Link from "next/link";
 import { AnchorHTMLAttributes, ButtonHTMLAttributes } from "react";
 
 const baseClasses =
-  "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-semibold transition-colors focus-visible:outline-offset-4 disabled:cursor-not-allowed disabled:opacity-60";
+  "inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-base font-semibold transition-all focus-visible:outline-offset-4 disabled:cursor-not-allowed disabled:opacity-60";
 
 const variants = {
-  primary: "bg-brand-600 text-white hover:bg-brand-700",
-  secondary: "bg-white text-brand-700 border-2 border-brand-600 hover:bg-brand-50",
-  accent: "bg-accent-600 text-white hover:bg-accent-700",
+  primary:
+    "bg-accent-500 text-cream-100 shadow-[0_4px_0_#8F3E1F] hover:bg-accent-400 hover:-translate-y-0.5",
+  secondary:
+    "bg-transparent text-brand-600 border-[1.5px] border-brand-600/25 hover:bg-brand-600/5",
+  accent: "bg-brand-600 text-cream-100 hover:bg-brand-700",
 };
 
 type Variant = keyof typeof variants;

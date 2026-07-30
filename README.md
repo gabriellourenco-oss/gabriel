@@ -87,21 +87,17 @@ src/
 usuária administradora. Não foi implementado um sistema de múltiplos
 usuários/permissões.
 
-## Placeholders a preencher
+## Conteúdo da landing page
 
-Busque por estes marcadores no código e substitua pelo conteúdo real antes
-de publicar o site:
+O conteúdo (nome, CRM, formação, fotos, telefone/WhatsApp, textos de cada
+seção) já foi finalizado a partir do design aprovado no Claude Design
+("Landing page para médica geriatra") e não usa mais placeholders
+genéricos. Não há endereço físico, mapa nem convênios divulgados no design
+final — o atendimento é particular, em consultório, teleconsulta ou visita
+domiciliar, mediante agendamento pelo WhatsApp ou pela página `/agendar`.
 
-| Placeholder      | Onde aparece                                   |
-| ----------------- | ----------------------------------------------- |
-| `[NOME_MEDICA]`   | Título da página, Hero, Sobre, Footer, Admin    |
-| `[CRM]`           | Hero, Footer                                    |
-| `[FOTO_MEDICA]`   | Hero (substituir o placeholder por `<Image>`)   |
-| `[ENDERECO]`      | Seção Localização e contato                     |
-| `[TELEFONE]`      | Seção Contato, Footer, links de WhatsApp         |
-| `[INSTAGRAM]`     | Footer                                          |
-| `[CONVENIOS]`     | Seção Contato, FAQ, placeholder do campo Convênio|
-| `[MAPA]`          | Seção Localização (embed do Google Maps)        |
+Caso os dados reais mudem no futuro (novo CRM, telefone, fotos etc.), edite
+diretamente nos componentes em `src/components/landing/`.
 
 ## Rodando localmente
 

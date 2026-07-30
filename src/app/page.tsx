@@ -1,11 +1,15 @@
 import { Header } from "@/components/landing/Header";
 import { Hero } from "@/components/landing/Hero";
 import { Sobre } from "@/components/landing/Sobre";
-import { Servicos } from "@/components/landing/Servicos";
+import { Atuacao } from "@/components/landing/Atuacao";
+import { FormasAtendimento } from "@/components/landing/FormasAtendimento";
+import { Diferenciais } from "@/components/landing/Diferenciais";
 import { ParaQuem } from "@/components/landing/ParaQuem";
-import { Localizacao } from "@/components/landing/Localizacao";
+import { Depoimentos } from "@/components/landing/Depoimentos";
 import { FAQ } from "@/components/landing/FAQ";
+import { Contato } from "@/components/landing/Contato";
 import { Footer } from "@/components/landing/Footer";
+import { WhatsAppFloat } from "@/components/landing/WhatsAppFloat";
 
 export default function HomePage() {
   return (
@@ -14,12 +18,16 @@ export default function HomePage() {
       <main>
         <Hero />
         <Sobre />
-        <Servicos />
+        <Atuacao />
+        <FormasAtendimento />
+        <Diferenciais />
         <ParaQuem />
-        <Localizacao />
+        <Depoimentos />
         <FAQ />
+        <Contato />
       </main>
       <Footer />
+      <WhatsAppFloat />
     </>
   );
 }
