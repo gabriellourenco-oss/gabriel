@@ -18,9 +18,9 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  title: "Dra. Juliana Trindade | Geriatria e Medicina de Família",
+  title: "Dra. Juliana Trindade | Medicina de Família, pós-graduanda em Geriatria",
   description:
-    "Cuidado atento para viver a terceira idade com autonomia e dignidade. Medicina de Família e Comunidade, com pós-graduação em Geriatria (Instituto Israelita Albert Einstein). Agende sua consulta.",
+    "Cuidado atento para viver a terceira idade com autonomia e dignidade. Medicina de Família e Comunidade, cursando pós-graduação em Geriatria (Instituto Israelita Albert Einstein). Agende sua consulta.",
 };
 
 export default function RootLayout({

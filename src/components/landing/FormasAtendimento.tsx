@@ -29,7 +29,7 @@ const formas = [
     titulo: "Visita domiciliar",
     indicado: "Indicado para: mobilidade reduzida ou pós-alta",
     texto:
-      "Sim, atendemos em casa. Para pacientes com mobilidade reduzida, acamados ou em recuperação pós-hospitalar, a consulta acontece no conforto do lar — basta agendar.",
+      "Sim, atendemos em casa. Para pacientes com mobilidade reduzida, acamados ou em recuperação pós-hospitalar, a consulta acontece no conforto do lar, basta agendar.",
     path: (
       <>
         <path
@@ -45,9 +45,9 @@ const formas = [
 
 export function FormasAtendimento() {
   return (
-    <section id="atendimento" className="bg-cream py-20 sm:py-24">
+    <section id="atendimento" className="bg-cream py-14 sm:py-16">
       <Container>
-        <div className="mx-auto mb-12 max-w-xl text-center">
+        <div className="mx-auto mb-9 max-w-xl text-center">
           <span className="mb-3.5 inline-block text-[13px] font-semibold uppercase tracking-wide text-brand-400">
             Formas de atendimento
           </span>

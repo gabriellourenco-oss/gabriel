@@ -44,9 +44,9 @@ const perfis = [
 
 export function ParaQuem() {
   return (
-    <section id="para-quem" className="bg-cream py-20 sm:py-24">
+    <section id="para-quem" className="bg-cream py-14 sm:py-16">
       <Container>
-        <div className="mx-auto mb-12 max-w-xl text-center">
+        <div className="mx-auto mb-9 max-w-xl text-center">
           <span className="mb-3.5 inline-block text-[13px] font-semibold uppercase tracking-wide text-brand-400">
             Para quem é esse cuidado
           </span>

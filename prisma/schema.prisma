@@ -45,7 +45,6 @@ model Agendamento {
   telefone       String
   email          String
   dataNascimento DateTime
-  convenio       String // "Particular" ou nome do convênio
   motivo         String?
   // "CONFIRMADO" | "CANCELADO" (SQLite não suporta enums nativamente)
   status         String   @default("CONFIRMADO")

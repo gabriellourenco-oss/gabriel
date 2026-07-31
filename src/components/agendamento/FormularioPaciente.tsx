@@ -37,9 +37,6 @@ function validar(dados: FormularioAgendamento): Erros {
   } else if (dados.dataNascimento >= hojeISO()) {
     erros.dataNascimento = "Data de nascimento deve estar no passado";
   }
-  if (dados.convenio.trim().length < 2) {
-    erros.convenio = "Informe o convênio ou 'Particular'";
-  }
 
   return erros;
 }
@@ -55,7 +52,6 @@ export function FormularioPaciente({
     telefone: "",
     email: "",
     dataNascimento: "",
-    convenio: "",
     motivo: "",
   });
   const [erros, setErros] = useState<Erros>({});
@@ -144,52 +140,27 @@ export function FormularioPaciente({
         </div>
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2">
-        <div>
-          <label htmlFor="dataNascimento" className="block text-sm font-medium text-slate-700">
-            Data de nascimento
-          </label>
-          <input
-            id="dataNascimento"
-            name="dataNascimento"
-            type="date"
-            required
-            max={hojeISO()}
-            value={dados.dataNascimento}
-            onChange={(e) => atualizar("dataNascimento", e.target.value)}
-            aria-invalid={!!erros.dataNascimento}
-            aria-describedby={erros.dataNascimento ? "erro-dataNascimento" : undefined}
-            className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-brand-500"
-          />
-          {erros.dataNascimento && (
-            <p id="erro-dataNascimento" className="mt-1 text-sm text-red-600">
-              {erros.dataNascimento}
-            </p>
-          )}
-        </div>
-
-        <div>
-          <label htmlFor="convenio" className="block text-sm font-medium text-slate-700">
-            Convênio ou particular
-          </label>
-          <input
-            id="convenio"
-            name="convenio"
-            type="text"
-            required
-            placeholder="Particular ou nome do convênio ([CONVENIOS])"
-            value={dados.convenio}
-            onChange={(e) => atualizar("convenio", e.target.value)}
-            aria-invalid={!!erros.convenio}
-            aria-describedby={erros.convenio ? "erro-convenio" : undefined}
-            className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-brand-500"
-          />
-          {erros.convenio && (
-            <p id="erro-convenio" className="mt-1 text-sm text-red-600">
-              {erros.convenio}
-            </p>
-          )}
-        </div>
+      <div>
+        <label htmlFor="dataNascimento" className="block text-sm font-medium text-slate-700">
+          Data de nascimento
+        </label>
+        <input
+          id="dataNascimento"
+          name="dataNascimento"
+          type="date"
+          required
+          max={hojeISO()}
+          value={dados.dataNascimento}
+          onChange={(e) => atualizar("dataNascimento", e.target.value)}
+          aria-invalid={!!erros.dataNascimento}
+          aria-describedby={erros.dataNascimento ? "erro-dataNascimento" : undefined}
+          className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-brand-500"
+        />
+        {erros.dataNascimento && (
+          <p id="erro-dataNascimento" className="mt-1 text-sm text-red-600">
+            {erros.dataNascimento}
+          </p>
+        )}
       </div>
 
       <div>

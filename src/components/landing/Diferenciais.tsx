@@ -14,7 +14,7 @@ const diferenciais = [
   {
     numero: "03",
     titulo: "Formação específica em Geriatria",
-    texto: "Pós-graduação pelo Instituto Israelita Albert Einstein, voltada às particularidades do paciente idoso.",
+    texto: "Pós-graduação em andamento pelo Instituto Israelita Albert Einstein, voltada às particularidades do paciente idoso.",
   },
   {
     numero: "04",
@@ -25,9 +25,9 @@ const diferenciais = [
 
 export function Diferenciais() {
   return (
-    <section id="diferenciais" className="bg-cream py-20 sm:py-24">
+    <section id="diferenciais" className="bg-cream py-14 sm:py-16">
       <Container>
-        <div className="mx-auto mb-12 max-w-xl text-center sm:mb-14">
+        <div className="mx-auto mb-9 max-w-xl text-center sm:mb-10">
           <span className="mb-3.5 inline-block text-[13px] font-semibold uppercase tracking-wide text-brand-400">
             Por que escolher esse atendimento
           </span>

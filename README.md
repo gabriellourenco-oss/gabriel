@@ -54,9 +54,9 @@ src/
 ## Como funciona o agendamento
 
 1. A médica define **regras de disponibilidade** (dia da semana, faixa de
-   horário e duração da consulta) na tabela `Disponibilidade` — hoje isso é
-   feito via `prisma/seed.ts` ou diretamente no banco (não há tela dedicada
-   para isso no painel admin, conforme escopo definido).
+   horário e duração da consulta) na tabela `Disponibilidade` — pela tela
+   "Horários disponíveis" do painel admin (`/admin`), ou via `prisma/seed.ts`
+   / diretamente no banco, se preferir.
 2. Ao acessar `/agendar`, o sistema gera automaticamente os horários
    (`slots`) de cada dia a partir dessas regras, removendo:
    - dias/horários com um agendamento `CONFIRMADO` já existente;
@@ -81,6 +81,8 @@ src/
 - Permite:
   - listar agendamentos de uma data específica;
   - cancelar um agendamento (libera o horário automaticamente);
+  - cadastrar, ativar/desativar e remover horários disponíveis
+    (dia da semana + faixa de horário + duração da consulta);
   - bloquear datas futuras (férias, feriados) e remover bloqueios.
 
 ⚠️ Este login por senha única é adequado para um consultório com uma única

@@ -62,7 +62,6 @@ export async function POST(request: NextRequest) {
         telefone: dados.telefone,
         email: dados.email,
         dataNascimento: parseDataISO(dados.dataNascimento),
-        convenio: dados.convenio,
         motivo: dados.motivo || null,
         chaveSlot: `${dados.data}_${slotEscolhido.horaInicio}`,
       },

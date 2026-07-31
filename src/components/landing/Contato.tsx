@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { AgendarClient } from "@/components/agendamento/AgendarClient";
 
 const WHATSAPP_NUMERO = "5533988732087";
 const WHATSAPP_TELEFONE = "(33) 9 8873-2087";
@@ -31,8 +31,8 @@ export function Contato() {
     "flex-1 rounded-[10px] px-3.5 py-3 text-[14.5px] font-semibold transition-colors";
 
   return (
-    <section id="contato" className="bg-brand-600 py-20 sm:py-24">
-      <Container className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+    <section id="contato" className="bg-brand-600 py-14 sm:py-16">
+      <Container className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <div>
           <span className="mb-3.5 inline-block text-[13px] font-semibold uppercase tracking-wide text-brand-300">
             Agende sua consulta
@@ -116,95 +116,106 @@ export function Contato() {
               </div>
             </div>
           </div>
+
+          <div className="mt-10 border-t border-white/10 pt-8">
+            <span className="mb-5 block text-[13px] font-semibold uppercase tracking-wide text-brand-300">
+              Como funciona
+            </span>
+            <div className="flex flex-col gap-5">
+              {[
+                { n: "01", t: "Escolha o dia e o horário", d: "Direto no calendário ao lado, sem precisar ligar." },
+                { n: "02", t: "Preencha seus dados", d: "Nome, telefone e e-mail para confirmarmos com você." },
+                { n: "03", t: "Pronto!", d: "Você recebe a confirmação com todos os detalhes da consulta." },
+              ].map((passo) => (
+                <div key={passo.n} className="flex items-start gap-4">
+                  <span className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-white/10 font-serif text-[13px] font-semibold text-brand-300">
+                    {passo.n}
+                  </span>
+                  <div>
+                    <div className="text-[15px] font-semibold text-cream-100">{passo.t}</div>
+                    <div className="text-[14px] text-brand-200">{passo.d}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
-        <div className="rounded-[20px] bg-cream-100 p-2">
-          <div className="mb-5.5 flex gap-1.5 rounded-[14px] bg-brand-600/[0.06] p-1.5">
+        <div>
+          <div className="mb-5 flex gap-1.5 rounded-2xl bg-white/10 p-1.5">
             <button
               type="button"
               onClick={() => setAba("online")}
-              className={`${tabBase} ${aba === "online" ? "bg-brand-600 text-cream-100" : "bg-transparent text-ink-500"}`}
+              className={`${tabBase} ${aba === "online" ? "bg-cream-100 text-brand-600" : "bg-transparent text-cream-100/70"}`}
             >
               Agendar online
             </button>
             <button
               type="button"
               onClick={() => setAba("whatsapp")}
-              className={`${tabBase} ${aba === "whatsapp" ? "bg-brand-600 text-cream-100" : "bg-transparent text-ink-500"}`}
+              className={`${tabBase} ${aba === "whatsapp" ? "bg-cream-100 text-brand-600" : "bg-transparent text-cream-100/70"}`}
             >
               Pelo WhatsApp
             </button>
           </div>
 
           {aba === "online" ? (
-            <div className="px-4 pb-7 pt-2 sm:px-7">
-              <h3 className="mb-1.5 font-serif text-xl font-semibold text-brand-600">Escolha data e horário</h3>
-              <p className="mb-6 text-[14.5px] text-ink-500">
-                Agendamento online com nosso calendário de horários disponíveis.
-              </p>
-              <Link
-                href="/agendar"
-                className="inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-accent-500 px-6 py-4 text-base font-semibold text-cream-100 shadow-[0_4px_0_#8F3E1F] transition-transform hover:-translate-y-0.5"
-              >
-                Ver horários e agendar
-              </Link>
-              <p className="mt-2.5 text-center text-[12.5px] text-ink-400">
-                Você escolhe o dia e o horário na próxima tela.
-              </p>
-            </div>
+            <AgendarClient />
           ) : (
-            <div className="px-4 pb-7 pt-2 sm:px-7">
-              <h3 className="mb-1.5 font-serif text-xl font-semibold text-brand-600">
-                Prefere que a gente te chame?
-              </h3>
-              <p className="mb-6 text-[14.5px] text-ink-500">Preencha os dados e envie direto para o WhatsApp.</p>
-              <div className="flex flex-col gap-4">
-                <div>
-                  <label htmlFor="contato-nome" className="mb-1.5 block text-sm font-semibold text-ink-600">
-                    Nome
-                  </label>
-                  <input
-                    id="contato-nome"
-                    type="text"
-                    value={nome}
-                    onChange={(e) => setNome(e.target.value)}
-                    placeholder="Seu nome"
-                    className="w-full rounded-[10px] border-[1.5px] border-ink/15 bg-white px-4 py-3.5 text-base text-ink"
-                  />
+            <div className="rounded-[20px] bg-cream-100 p-2">
+              <div className="px-4 pb-7 pt-6 sm:px-7">
+                <h3 className="mb-1.5 font-serif text-xl font-semibold text-brand-600">
+                  Prefere que a gente te chame?
+                </h3>
+                <p className="mb-6 text-[14.5px] text-ink-500">Preencha os dados e envie direto para o WhatsApp.</p>
+                <div className="flex flex-col gap-4">
+                  <div>
+                    <label htmlFor="contato-nome" className="mb-1.5 block text-sm font-semibold text-ink-600">
+                      Nome
+                    </label>
+                    <input
+                      id="contato-nome"
+                      type="text"
+                      value={nome}
+                      onChange={(e) => setNome(e.target.value)}
+                      placeholder="Seu nome"
+                      className="w-full rounded-[10px] border-[1.5px] border-ink/15 bg-white px-4 py-3.5 text-base text-ink"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="contato-telefone" className="mb-1.5 block text-sm font-semibold text-ink-600">
+                      Telefone
+                    </label>
+                    <input
+                      id="contato-telefone"
+                      type="tel"
+                      value={telefone}
+                      onChange={(e) => setTelefone(e.target.value)}
+                      placeholder="(33) 9 0000-0000"
+                      className="w-full rounded-[10px] border-[1.5px] border-ink/15 bg-white px-4 py-3.5 text-base text-ink"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="contato-mensagem" className="mb-1.5 block text-sm font-semibold text-ink-600">
+                      Mensagem (opcional)
+                    </label>
+                    <textarea
+                      id="contato-mensagem"
+                      rows={3}
+                      value={mensagem}
+                      onChange={(e) => setMensagem(e.target.value)}
+                      placeholder="Conte um pouco sobre o motivo da consulta"
+                      className="w-full resize-y rounded-[10px] border-[1.5px] border-ink/15 bg-white px-4 py-3.5 text-base text-ink"
+                    />
+                  </div>
+                  <button
+                    type="button"
+                    onClick={enviarWhatsapp}
+                    className="mt-1.5 inline-flex items-center justify-center gap-2.5 rounded-xl bg-accent-500 px-6 py-4 text-base font-semibold text-cream-100 shadow-[0_4px_0_#8F3E1F] transition-transform hover:-translate-y-0.5"
+                  >
+                    Enviar pelo WhatsApp
+                  </button>
                 </div>
-                <div>
-                  <label htmlFor="contato-telefone" className="mb-1.5 block text-sm font-semibold text-ink-600">
-                    Telefone
-                  </label>
-                  <input
-                    id="contato-telefone"
-                    type="tel"
-                    value={telefone}
-                    onChange={(e) => setTelefone(e.target.value)}
-                    placeholder="(33) 9 0000-0000"
-                    className="w-full rounded-[10px] border-[1.5px] border-ink/15 bg-white px-4 py-3.5 text-base text-ink"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="contato-mensagem" className="mb-1.5 block text-sm font-semibold text-ink-600">
-                    Mensagem (opcional)
-                  </label>
-                  <textarea
-                    id="contato-mensagem"
-                    rows={3}
-                    value={mensagem}
-                    onChange={(e) => setMensagem(e.target.value)}
-                    placeholder="Conte um pouco sobre o motivo da consulta"
-                    className="w-full resize-y rounded-[10px] border-[1.5px] border-ink/15 bg-white px-4 py-3.5 text-base text-ink"
-                  />
-                </div>
-                <button
-                  type="button"
-                  onClick={enviarWhatsapp}
-                  className="mt-1.5 inline-flex items-center justify-center gap-2.5 rounded-xl bg-accent-500 px-6 py-4 text-base font-semibold text-cream-100 shadow-[0_4px_0_#8F3E1F] transition-transform hover:-translate-y-0.5"
-                >
-                  Enviar pelo WhatsApp
-                </button>
               </div>
             </div>
           )}

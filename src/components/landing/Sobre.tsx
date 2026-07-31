@@ -2,20 +2,20 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 
 const trajetoria = [
-  { periodo: "2025", texto: "Graduação em Medicina — Univale, Governador Valadares" },
+  { periodo: "2025", texto: "Graduação em Medicina pela Univale, Governador Valadares" },
   {
     periodo: "Atual",
     texto: "Médica na Atenção Primária à Saúde, com atendimento contínuo e longitudinal",
   },
   {
     periodo: "Em curso",
-    texto: "Pós-graduação em Geriatria — Instituto Israelita Albert Einstein",
+    texto: "Pós-graduação em Geriatria pelo Instituto Israelita Albert Einstein",
   },
 ];
 
 export function Sobre() {
   return (
-    <section id="sobre" className="bg-brand-50 py-20 sm:py-24">
+    <section id="sobre" className="bg-brand-50 py-14 sm:py-16">
       <Container className="grid items-start gap-14 lg:grid-cols-[0.8fr_1.2fr]">
         <div className="relative mx-auto w-full max-w-[420px]">
           <Image
@@ -44,13 +44,48 @@ export function Sobre() {
           </p>
           <p className="mt-4 text-[17px] leading-relaxed text-ink-600">
             Essa experiência despertou um interesse especial pela saúde do
-            idoso — hoje aprofundado na pós-graduação em Geriatria pelo
-            Instituto Israelita de Ensino e Pesquisa Albert Einstein. Sua
-            abordagem une agilidade clínica, comunicação empática e decisões
-            tomadas em conjunto com o paciente e a família.
+            idoso, hoje aprofundado na pós-graduação em Geriatria que cursa
+            atualmente pelo Instituto Israelita de Ensino e Pesquisa Albert
+            Einstein. Sua abordagem une agilidade clínica, comunicação
+            empática e decisões tomadas em conjunto com o paciente e a
+            família.
           </p>
 
-          <div className="mt-8 flex flex-col">
+          <div className="mt-7 flex items-start gap-4 rounded-xl border-l-4 border-accent-500 bg-cream p-5 shadow-sm">
+            <div className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-brand-600">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M12 4L3 8.5 12 13l9-4.5L12 4z"
+                  stroke="#F3EFE4"
+                  strokeWidth="1.6"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M7 10.5v4c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5v-4"
+                  stroke="#F3EFE4"
+                  strokeWidth="1.6"
+                />
+                <path d="M21 8.5V14" stroke="#F3EFE4" strokeWidth="1.6" strokeLinecap="round" />
+              </svg>
+            </div>
+            <div>
+              <span className="text-[11px] font-semibold uppercase tracking-wide text-accent-500">
+                Formação em andamento
+              </span>
+              <h3 className="font-serif text-lg font-semibold text-brand-600">
+                Pós-graduanda em Geriatria
+              </h3>
+              <p className="text-sm font-semibold text-ink">Instituto Israelita Albert Einstein</p>
+              <p className="mt-1.5 text-sm leading-relaxed text-ink-500">
+                Cursando atualmente uma pós-graduação no Instituto Israelita
+                Albert Einstein, uma das instituições de saúde mais
+                respeitadas do Brasil, referência nacional em ensino e
+                pesquisa médica.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-7 flex flex-col">
             {trajetoria.map((item) => (
               <div
                 key={item.periodo}

@@ -3,17 +3,12 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { LogoMark } from "@/components/landing/Logo";
 
-const credenciais = [
-  "CRM/MG 109990",
-  "Formação Univale",
-  "Pós-graduação em Geriatria · Einstein",
-  "ACLS certificada",
-];
+const credenciais = ["CRM/MG 109990", "Formação Univale", "ACLS certificada"];
 
 export function Hero() {
   return (
     <section id="topo" className="relative overflow-hidden bg-gradient-to-b from-brand-50 to-cream">
-      <Container className="grid gap-14 py-14 sm:py-20 lg:grid-cols-2 lg:items-center lg:py-24">
+      <Container className="grid gap-14 py-12 sm:py-16 lg:grid-cols-2 lg:items-center lg:py-16">
         <div>
           <span className="mb-5 inline-flex items-center gap-2 rounded-full bg-brand-50 px-3.5 py-2 text-[13px] font-semibold text-brand-500">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -76,7 +71,14 @@ export function Hero() {
             </ButtonLink>
           </div>
 
-          <div className="mt-9 flex flex-wrap gap-5 border-t border-ink/10 pt-6">
+          <div className="mt-9 flex flex-wrap items-center gap-3.5 border-t border-ink/10 pt-6">
+            <div className="inline-flex items-center gap-1.5 rounded-full border border-accent-500/40 bg-accent-50 px-3 py-1.5 text-[13px] font-semibold text-accent-600">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 4L3 8.5 12 13l9-4.5L12 4z" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
+                <path d="M7 10.5v4c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5v-4" stroke="currentColor" strokeWidth="1.7" />
+              </svg>
+              Pós-graduanda em Geriatria · Albert Einstein
+            </div>
             {credenciais.map((item) => (
               <div key={item} className="flex items-center gap-2 text-[13.5px] font-medium text-ink-500">
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-300" />

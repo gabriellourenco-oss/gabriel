@@ -14,7 +14,7 @@ const perguntas = [
   {
     pergunta: "Existe atendimento domiciliar?",
     resposta:
-      "Sim, realizamos visita domiciliar. É a melhor opção para quem tem mobilidade reduzida, está acamado ou em recuperação — só precisa agendar pelo WhatsApp.",
+      "Sim, realizamos visita domiciliar. É a melhor opção para quem tem mobilidade reduzida, está acamado ou em recuperação, só precisa agendar pelo WhatsApp.",
   },
   {
     pergunta: "Posso levar um familiar para acompanhar?",
@@ -25,9 +25,9 @@ const perguntas = [
 
 export function FAQ() {
   return (
-    <section id="faq" className="bg-cream py-20 sm:py-24">
+    <section id="faq" className="bg-cream py-14 sm:py-16">
       <Container className="mx-auto max-w-2xl">
-        <div className="mb-12 text-center">
+        <div className="mb-9 text-center">
           <span className="mb-3.5 inline-block text-[13px] font-semibold uppercase tracking-wide text-brand-400">
             Dúvidas frequentes
           </span>

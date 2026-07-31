@@ -19,7 +19,6 @@ export const agendamentoSchema = z.object({
     .regex(/^[\d\s()+-]+$/, "Use apenas números, espaços e símbolos (), +, -"),
   email: z.string().trim().email("Informe um e-mail válido").max(160),
   dataNascimento: z.string().regex(dataISORegex, "Data de nascimento inválida"),
-  convenio: z.string().trim().min(2, "Informe o convênio ou 'Particular'").max(80),
   motivo: z.string().trim().max(500).optional().or(z.literal("")),
 });
 

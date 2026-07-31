@@ -57,7 +57,7 @@ export function Logo({ size = 40, variant = "dark" }: LogoProps) {
             light ? "text-brand-300" : "text-ink-500"
           }`}
         >
-          Medicina de Família &amp; Geriatria
+          Medicina de Família e Comunidade
         </span>
       </span>
     </span>

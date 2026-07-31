@@ -11,7 +11,6 @@ export interface FormularioAgendamento {
   telefone: string;
   email: string;
   dataNascimento: string;
-  convenio: string;
   motivo: string;
 }
 
@@ -23,6 +22,5 @@ export interface AgendamentoConfirmado {
   nomePaciente: string;
   telefone: string;
   email: string;
-  convenio: string;
   motivo?: string | null;
 }

@@ -20,6 +20,13 @@ export function Footer() {
             Medicina de Família e Comunidade, com dedicação à saúde do idoso.
             CRM/MG 109990.
           </p>
+          <div className="mt-3.5 inline-flex items-center gap-1.5 rounded-full border border-brand-300/30 bg-white/5 px-3 py-1.5 text-[12.5px] font-medium text-brand-200">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 4L3 8.5 12 13l9-4.5L12 4z" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
+              <path d="M7 10.5v4c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5v-4" stroke="currentColor" strokeWidth="1.7" />
+            </svg>
+            Pós-graduanda em Geriatria, Instituto Israelita Albert Einstein
+          </div>
         </div>
 
         <div>
@@ -49,7 +56,7 @@ export function Footer() {
         </div>
       </Container>
       <p className="mx-auto mt-5 max-w-6xl text-center text-[13px] text-brand-300">
-        © {new Date().getFullYear()} Dra. Juliana Trindade — CRM/MG 109990. Todos os direitos reservados.
+        © {new Date().getFullYear()} Dra. Juliana Trindade, CRM/MG 109990. Todos os direitos reservados.
       </p>
     </footer>
   );

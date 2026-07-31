@@ -5,6 +5,7 @@ import { Calendario } from "@/components/agendamento/Calendario";
 import { SlotList } from "@/components/agendamento/SlotList";
 import { FormularioPaciente } from "@/components/agendamento/FormularioPaciente";
 import { ResumoConfirmacao } from "@/components/agendamento/ResumoConfirmacao";
+import { Button } from "@/components/ui/Button";
 import {
   AgendamentoConfirmado,
   FormularioAgendamento,
@@ -19,7 +20,12 @@ function hoje() {
   return { ano: agora.getFullYear(), mes: agora.getMonth() + 1 };
 }
 
-export function AgendarClient() {
+interface AgendarClientProps {
+  tamanho?: "compacto" | "grande";
+}
+
+export function AgendarClient({ tamanho = "compacto" }: AgendarClientProps) {
+  const grande = tamanho === "grande";
   const [{ ano, mes }, setAnoMes] = useState(hoje());
   const [resumo, setResumo] = useState<ResumoMes>({});
   const [carregandoMes, setCarregandoMes] = useState(true);
@@ -97,7 +103,6 @@ export function AgendarClient() {
         nomePaciente: json.agendamento.nomePaciente,
         telefone: json.agendamento.telefone,
         email: json.agendamento.email,
-        convenio: json.agendamento.convenio,
         motivo: json.agendamento.motivo,
       });
       setEtapa("confirmado");
@@ -112,9 +117,14 @@ export function AgendarClient() {
     return <ResumoConfirmacao agendamento={agendamento} />;
   }
 
+  const temSelecao = Boolean(dataSelecionada && slotSelecionado);
+  const cardBase = `rounded-xl bg-cream-100 ring-1 ring-brand-600/10 ${
+    grande ? "shadow-sm p-6" : "shadow-[0_20px_40px_-28px_rgba(15,45,43,0.35)] p-5"
+  }`;
+
   return (
-    <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
-      <div className="space-y-6">
+    <div className={grande ? "grid gap-8 lg:grid-cols-[3fr_2fr] lg:items-start" : "flex flex-col gap-5"}>
+      <div className="space-y-4">
         <Calendario
           ano={ano}
           mes={mes}
@@ -123,11 +133,16 @@ export function AgendarClient() {
           carregando={carregandoMes}
           onSelecionarData={selecionarData}
           onMudarMes={(novoAno, novoMes) => setAnoMes({ ano: novoAno, mes: novoMes })}
+          tamanho={tamanho}
         />
 
         {dataSelecionada && (
-          <div className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-100 sm:p-6">
-            <h3 className="mb-3 text-sm font-semibold text-slate-700">
+          <div
+            className={`mx-auto w-full rounded-xl bg-cream-100 ring-1 ring-brand-600/10 ${
+              grande ? "max-w-[460px] shadow-sm p-5" : "max-w-[320px] shadow-[0_20px_40px_-28px_rgba(15,45,43,0.35)] p-4"
+            }`}
+          >
+            <h3 className={`font-semibold text-brand-600 ${grande ? "mb-3 text-sm" : "mb-2.5 text-[13px]"}`}>
               Horários disponíveis
             </h3>
             <SlotList
@@ -135,45 +150,55 @@ export function AgendarClient() {
               carregando={carregandoSlots}
               slotSelecionado={slotSelecionado}
               onSelecionarSlot={setSlotSelecionado}
+              tamanho={tamanho}
             />
           </div>
         )}
       </div>
 
-      <div className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100 sm:p-8">
-        {etapa === "calendario" ? (
-          <div className="flex h-full flex-col items-start justify-center gap-4 text-slate-600">
-            <p>
-              Selecione uma data disponível no calendário e, em seguida, um
-              horário para continuar com o agendamento.
-            </p>
-            {dataSelecionada && slotSelecionado && (
-              <button
-                type="button"
-                onClick={irParaFormulario}
-                className="inline-flex items-center justify-center rounded-full bg-brand-600 px-6 py-3 text-base font-semibold text-white hover:bg-brand-700"
-              >
-                Continuar para os dados do paciente
-              </button>
-            )}
-          </div>
-        ) : (
-          <>
-            <h3 className="mb-1 text-lg font-semibold text-slate-900">Seus dados</h3>
-            <p className="mb-5 text-sm text-slate-500">
-              {dataSelecionada && slotSelecionado
-                ? `Consulta em ${dataSelecionada.split("-").reverse().join("/")} às ${slotSelecionado}`
-                : ""}
-            </p>
-            <FormularioPaciente
-              enviando={enviando}
-              erroEnvio={erroEnvio}
-              onEnviar={enviarFormulario}
-              onVoltar={() => setEtapa("calendario")}
-            />
-          </>
-        )}
-      </div>
+      {etapa === "calendario" ? (
+        <div className={`${cardBase} ${grande ? "lg:sticky lg:top-24" : ""}`}>
+          {!temSelecao ? (
+            <div className="flex flex-col items-center gap-2 py-6 text-center">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-brand-300" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" strokeWidth="1.6" />
+                <path d="M3 9.5h18M8 3v4M16 3v4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+              </svg>
+              <p className="max-w-[220px] text-sm text-ink-400">
+                Selecione uma data e um horário no calendário para continuar.
+              </p>
+            </div>
+          ) : (
+            <div className="flex flex-col items-center text-center">
+              <h3 className="font-serif text-lg font-semibold text-brand-600">Confirme seu agendamento</h3>
+              <div className="mt-3 rounded-lg bg-brand-50 px-4 py-2.5 text-sm font-semibold text-brand-600">
+                {dataSelecionada!.split("-").reverse().join("/")} às {slotSelecionado}
+              </div>
+              <Button type="button" onClick={irParaFormulario} className="mt-5">
+                Continuar para seus dados
+              </Button>
+              <p className="mt-3 max-w-[240px] text-xs text-ink-400">
+                Você vai preencher seus dados de contato na próxima etapa.
+              </p>
+            </div>
+          )}
+        </div>
+      ) : (
+        <div className={cardBase}>
+          <h3 className="mb-1 font-serif text-lg font-semibold text-brand-600">Seus dados</h3>
+          <p className="mb-5 text-sm text-ink-500">
+            {dataSelecionada && slotSelecionado
+              ? `Consulta em ${dataSelecionada.split("-").reverse().join("/")} às ${slotSelecionado}`
+              : ""}
+          </p>
+          <FormularioPaciente
+            enviando={enviando}
+            erroEnvio={erroEnvio}
+            onEnviar={enviarFormulario}
+            onVoltar={() => setEtapa("calendario")}
+          />
+        </div>
+      )}
     </div>
   );
 }

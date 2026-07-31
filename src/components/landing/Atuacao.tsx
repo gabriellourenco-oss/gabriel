@@ -73,9 +73,9 @@ const areas = [
 
 export function Atuacao() {
   return (
-    <section id="atuacao" className="bg-brand-600 py-20 sm:py-24">
+    <section id="atuacao" className="bg-brand-600 py-14 sm:py-16">
       <Container>
-        <div className="mx-auto mb-12 max-w-xl text-center sm:mb-14">
+        <div className="mx-auto mb-9 max-w-xl text-center sm:mb-10">
           <span className="mb-3.5 inline-block text-[13px] font-semibold uppercase tracking-wide text-brand-300">
             Áreas de atuação
           </span>
