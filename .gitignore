@@ -42,3 +42,6 @@ next-env.d.ts
 
 # vendored skill test fixtures (not needed at runtime)
 .agents/skills/notebooklm/tests/
+
+# bundles .mcpb gerados por "npx @anthropic-ai/mcpb pack" (reproduzíveis)
+.agents/skills/notebooklm/*.mcpb
