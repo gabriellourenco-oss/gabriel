@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# vendored skill test fixtures (not needed at runtime)
+.agents/skills/notebooklm/tests/
